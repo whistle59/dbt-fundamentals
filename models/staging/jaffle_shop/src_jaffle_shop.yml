@@ -1,13 +1,30 @@
 version: 2
+
 sources:
   - name: jaffle_shop
+    description: sample dataset from bigquery
     database: feisty-pottery-343714
     schema: jaffle_shop
     tables:
       - name: customers
+        description: Raw customers data.
+        columns:
+          - name: id
+            description: primary key for customers
+            tests:
+              - unique
+              - not_null
+
       - name: orders
-#        loaded at: _batched_at
-#        freshness:
-#          warn_after: {count: 120, period: hour}
-#          error_after: {count: 200, period: hour}
+        description: raw orders data
+        columns:
+          - name: id
+            description: primary key for orders
+            tests:
+              - unique
+              - not_null
+#           loaded at: _batched_at
+#           freshness:
+#             warn_after: {count: 120, period: hour}
+#             error_after: {count: 200, period: hour}
  
